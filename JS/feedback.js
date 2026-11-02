@@ -114,7 +114,7 @@ function validateComments() {
     // Check if the comment has at least 15 characters
     if (commentText.length < 15) {
         showFieldError(comments, commentsError,
-            "Please enter at least 15 characters.");
+            "Please enter at least 15 characters!");
         return false;
     }
     // If the comment is valid
@@ -170,16 +170,28 @@ function clearFieldError(input, errorElement) {
 //FORM SUBMISSION and EVENT LISTENER
 
 feedbackForm.addEventListener("submit", function(event) {   
-    event.preventDefault(); //prevents page from refreshing automatically
+    
+    //prevents page from refreshing automatically
+    event.preventDefault(); 
 
+    // Run all validation functions
     const isNameValid = validateFullName();
     const isEmailValid = validateEmail();
     const isTopicValid = validateTopic();
+    const areCommentsValid = validateComments();
 
+    // Check the results
     console.log("Is the name valid?", isNameValid); 
     console.log("Is the email valid?", isEmailValid);
     console.log("Is the topic valid?", isTopicValid);
+    console.log("Are the comments valid?", areCommentsValid);
+
+    // Check if any field is invalid
+    if (!isNameValid || !isEmailValid || !isTopicValid || !areCommentsValid) {
+    return;
+}
+
+// Display a success message
+formStatus.textContent = `Thanks for your precious feedback, ${fullName.value.trim()}!`;
 
 });
-
-
