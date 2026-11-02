@@ -127,6 +127,34 @@ function validateComments() {
 
 //----------------------------------------------------
 
+//VALIDATION OF WEBSITE (optional field)
+
+function validateWebsite() {
+
+    // Get the website entered by the user
+    const websiteValue = website.value.trim();
+
+    // Check if the field is empty
+    if (websiteValue === "") {
+        clearFieldError(website, websiteError);
+        return true;
+    }
+    // Check if the URL is valid
+    if (!website.checkValidity()) {
+        showFieldError(website, websiteError,
+            "Please enter a valid website URL!");
+        return false;
+    }
+    // If the URL is valid
+    clearFieldError(website, websiteError);
+    website.classList.add("input-valid");
+    return true;
+}
+
+
+
+//----------------------------------------------------
+
 //LIVE CHARACTER COUNTER FOR COMMENTS
 
 comments.addEventListener("input", function() {
@@ -220,6 +248,7 @@ feedbackForm.addEventListener("submit", function(event) {
     const isEmailValid = validateEmail();
     const isTopicValid = validateTopic();
     const areCommentsValid = validateComments();
+    const isWebsiteValid = validateWebsite();
 
     // Check the results
     console.log("Is the name valid?", isNameValid); 
@@ -228,8 +257,9 @@ feedbackForm.addEventListener("submit", function(event) {
     console.log("Are the comments valid?", areCommentsValid);
 
     // Check if any field is invalid
-    if (!isNameValid || !isEmailValid || !isTopicValid || !areCommentsValid) {
+    if (!isNameValid || !isEmailValid || !isTopicValid || !areCommentsValid || !isWebsiteValid) {
     return;
+
 }
 
 
