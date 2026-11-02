@@ -18,8 +18,9 @@
     </header>
 
     <main>
+        <!-- novalidate to show our custom validation messages and not the default ones -->
         <form id="feedbackForm" novalidate>
-            <h2>Wanna share your feedback?</h2>
+            <h2>Wanna share your thoughts?</h2>
 
 
             <!-- full name input -->
@@ -44,12 +45,14 @@
 
 
 
-            <!-- topic input -->
+            <!-- topic input and drop down menu-->
             <div class="form-group">
                 <label for="topic">Topic of Interest</label>
                 <select id="topic" name="topic"
                     required aria-describedby="topicError">
+                    
 
+                    <!-- is empty because the user has to choose a topic, otherwise the form will not be submitted-->
                     <option value="">Choose a topic</option>
                     <option value="web-design">Web Design</option>
                     <option value="javascript">JavaScript</option>
@@ -69,7 +72,7 @@
                 <textarea id="comments" name="comments"
                     minlength="15" required aria-describedby="commentsError counter"></textarea>
 
-                <p id="counter">Minimum 15 characters! 0/15</p>
+                <p id="counter">Minimum 15 characters - 0/15</p>
                 <p id="commentsError" class="error-message"></p>
             </div>
 

@@ -203,7 +203,7 @@ function resetForm() {
 }
 
 
-//RESET CLEAR BUTTON EVENT LISTENER
+//RESET CLEAR FORM EVENT LISTENER
 clearButton.addEventListener("click", function(event) {
     // Stop the browser's default reset action
     event.preventDefault();
@@ -230,15 +230,19 @@ function showFieldError(input, errorElement, message) {
     input.classList.add("input-error");
     input.classList.remove("input-valid");
     input.setAttribute("aria-invalid", "true");
+    //true means field has an error
 }
 
 function clearFieldError(input, errorElement) {
     errorElement.textContent = "";
 
+    //we remove both classes to ensure that the input field is reset 
+    //to its default state, without any error or valid styling
     input.classList.remove("input-error");
     input.classList.remove("input-valid");
 
     input.setAttribute("aria-invalid", "false");
+    //false means field is not marked as invalid, so it is valid
 }
 
 
