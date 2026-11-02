@@ -152,6 +152,16 @@ function validateWebsite() {
 }
 
 
+//----------------------------------------------------
+
+//VALIDATION OF FIELDS when user leaves the field (blur event)
+
+fullName.addEventListener("blur", validateFullName);
+email.addEventListener("blur", validateEmail);
+topic.addEventListener("blur", validateTopic);
+comments.addEventListener("blur", validateComments);
+website.addEventListener("blur", validateWebsite);
+
 
 //----------------------------------------------------
 
