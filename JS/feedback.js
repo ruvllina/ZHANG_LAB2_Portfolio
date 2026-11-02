@@ -21,6 +21,8 @@ const websiteError = document.getElementById("websiteError");
 // OTHER ELEMENTS
 const counter = document.getElementById("counter");
 const formStatus = document.getElementById("formStatus");
+const clearButton = document.querySelector('button[type="reset"]');
+//querySelector searches for element that matches the CSS selector
 
 console.log("Feedback JavaScript is connected!");
 
@@ -143,6 +145,40 @@ comments.addEventListener("input", function() {
     }
 });
 
+//----------------------------------------------------
+
+//RESET AFTER SUCCESSFUL SUBMISSION
+
+function resetForm() {
+
+    // Reset all form fields to their original values (empty)
+    feedbackForm.reset();
+    // Clear all error messages and validation styles
+    clearFieldError(fullName, fullNameError);
+    clearFieldError(email, emailError);
+    clearFieldError(topic, topicError);
+    clearFieldError(comments, commentsError);
+    clearFieldError(website, websiteError);
+    // Reset the character counter
+    counter.textContent = "Minimum 15 characters - 0/15";
+    counter.classList.remove("counter-error", "counter-valid");
+}
+
+
+//RESET CLEAR BUTTON EVENT LISTENER
+clearButton.addEventListener("click", function(event) {
+    // Stop the browser's default reset action
+    event.preventDefault();
+    // Reset all form fields and validation styles
+    resetForm();
+    // Clear the success message
+    formStatus.textContent = "";
+    formStatus.classList.remove("hidden");
+});
+
+
+
+
 
 
 
@@ -160,7 +196,10 @@ function showFieldError(input, errorElement, message) {
 
 function clearFieldError(input, errorElement) {
     errorElement.textContent = "";
+
     input.classList.remove("input-error");
+    input.classList.remove("input-valid");
+
     input.setAttribute("aria-invalid", "false");
 }
 
@@ -172,7 +211,9 @@ function clearFieldError(input, errorElement) {
 feedbackForm.addEventListener("submit", function(event) {   
     
     //prevents page from refreshing automatically
-    event.preventDefault(); 
+    event.preventDefault();
+    //clear any previous success message
+    formStatus.textContent = "";
 
     // Run all validation functions
     const isNameValid = validateFullName();
@@ -191,7 +232,28 @@ feedbackForm.addEventListener("submit", function(event) {
     return;
 }
 
+
+//----------SUBMIT EVENT LISTENER-------------------------------
+
+
 // Display a success message
-formStatus.textContent = `Thanks for your precious feedback, ${fullName.value.trim()}!`;
+formStatus.textContent = `THANK YOU for your precious feedback, ${fullName.value.trim()}!`;
+
+// Reset the form
+resetForm();
+
+// Remove success message after 4 seconds
+setTimeout(function() {
+
+    // Start fading out the message
+    formStatus.classList.add("hidden");
+
+    // Remove the text after the fade-out finishes
+    setTimeout(function() {
+        formStatus.textContent = "";
+        formStatus.classList.remove("hidden");
+    }, 1000);
+
+}, 4000); //fade out after 4 seconds
 
 });
