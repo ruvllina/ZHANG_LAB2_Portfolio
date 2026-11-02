@@ -85,6 +85,24 @@ function validateEmail() {
 
 //----------------------------------------------------
 
+//VALIDATION OF TOPIC
+function validateTopic() {
+    // Get the selected topic
+    const selectedTopic = topic.value; 
+    //value retrieves the value of the selected option
+    
+    // Check if the user selected a topic
+    if (selectedTopic === "") {
+        showFieldError(topic, topicError,
+            "Please select a topic");
+        return false;
+    }
+
+    // If a topic is selected
+    clearFieldError(topic, topicError);
+    topic.classList.add("input-valid");
+    return true;
+}
 
 
 
@@ -126,9 +144,12 @@ feedbackForm.addEventListener("submit", function(event) {
 
     const isNameValid = validateFullName();
     const isEmailValid = validateEmail();
+    const isTopicValid = validateTopic();
 
     console.log("Is the name valid?", isNameValid); 
     console.log("Is the email valid?", isEmailValid);
+    console.log("Is the topic valid?", isTopicValid);
 
 });
+
 
