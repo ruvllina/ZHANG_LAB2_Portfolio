@@ -164,6 +164,18 @@ button:focus-visible {
     margin: 0;
 }
 
+/* COMMENT COUNTER COLOR */
+#counter.counter-error {
+    color: red;
+}
+#counter.counter-valid {
+    color: green;
+}
+
+
+
+
+
 /* MOBILE RESPONSIVE */
 @media (max-width: 600px) {
 

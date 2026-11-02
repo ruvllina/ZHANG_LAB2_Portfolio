@@ -104,14 +104,44 @@ function validateTopic() {
     return true;
 }
 
+//----------------------------------------------------
 
+//VALIDATION OF COMMENTS
 
+function validateComments() {
+    // Get the text entered by the user
+    const commentText = comments.value.trim();
+    // Check if the comment has at least 15 characters
+    if (commentText.length < 15) {
+        showFieldError(comments, commentsError,
+            "Please enter at least 15 characters.");
+        return false;
+    }
+    // If the comment is valid
+    clearFieldError(comments, commentsError);
+    comments.classList.add("input-valid");
+    return true;
+}
 
+//----------------------------------------------------
 
+//LIVE CHARACTER COUNTER FOR COMMENTS
 
+comments.addEventListener("input", function() {
 
-
-
+    // Count the characters typed by the user
+    const currentLength = comments.value.length;
+    // Update the counter
+    counter.textContent = `Minimum 15 characters ${currentLength}/15`;
+    // Change the counter colour
+    if (currentLength < 15) {
+        counter.classList.remove("counter-valid");
+        counter.classList.add("counter-error");
+    } else {
+        counter.classList.remove("counter-error");
+        counter.classList.add("counter-valid");
+    }
+});
 
 
 
