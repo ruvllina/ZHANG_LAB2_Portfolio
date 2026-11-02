@@ -27,8 +27,6 @@ console.log("Feedback JavaScript is connected!");
 //----------------------------------------------------
 
 //VALIDATION OF FULL NAME
-
-
 function validateFullName() {
 
     // .value receives the name entered by the user
@@ -38,7 +36,7 @@ function validateFullName() {
     // Check if the name is empty or too short
     if (name.length < 2) {
         showFieldError(fullName, fullNameError,
-            "Please enter at least 2 characters.");
+            "Please enter at least 2 characters!");
         return false; //when name is invalid
     }
 
@@ -46,7 +44,7 @@ function validateFullName() {
     const namePattern = /^[\p{L}\p{M}]+(?:[ '\u2019-][\p{L}\p{M}]+)*$/u;
     if (!namePattern.test(name)) { //if it follows pattern
         showFieldError(fullName, fullNameError,
-            "Please use letters, spaces, apostrophes or hyphens only.");
+            "Please use letters, spaces, apostrophes or hyphens only!");
         return false;
     }
 
@@ -58,7 +56,50 @@ function validateFullName() {
 }
 
 
+//----------------------------------------------------
 
+//VALIDATION OF EMAIL
+function validateEmail() {
+    // Get the email entered by the user
+    const emailValue = email.value.trim();
+    // Check if the email is empty
+    if (emailValue === "") {
+        showFieldError(email, emailError,
+            "Please enter your email address");
+        return false;
+    }
+
+    // Check the email format
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+    if (!emailPattern.test(emailValue)) {
+        showFieldError(email, emailError,
+            "Please enter a valid email address!");
+        return false;
+    }
+
+    // If the email is valid
+    clearFieldError(email, emailError);
+    email.classList.add("input-valid");
+    return true;
+}
+
+//----------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//----------------------------------------------------
 
 //reusable error display code functions
 
@@ -76,22 +117,18 @@ function clearFieldError(input, errorElement) {
 }
 
 
-
-
-
-
-
-
-
-
-
 //----------------------------------------------------
 
 //FORM SUBMISSION and EVENT LISTENER
 
 feedbackForm.addEventListener("submit", function(event) {   
     event.preventDefault(); //prevents page from refreshing automatically
+
     const isNameValid = validateFullName();
+    const isEmailValid = validateEmail();
+
     console.log("Is the name valid?", isNameValid); 
+    console.log("Is the email valid?", isEmailValid);
+
 });
 
