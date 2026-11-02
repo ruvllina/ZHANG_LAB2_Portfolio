@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Luisa's portfolio</title>
+
+    <link rel="stylesheet" href="Styles/feedback.css">
+    <script src="JS/feedback.js" defer></script>
+
+</head>
+<body>
+
+    <header>
+        <h1>Feedback & Newsletter</h1>
+        <p>I would love to hear from you!</p>
+    </header>
+
+    <main>
+        <form id="feedbackForm" novalidate>
+            <h2>Wanna share your feedback?</h2>
+
+
+            <!-- full name input -->
+            <div class="form-group">
+                <label for="fullName">Your Full Name</label>
+                <input type="text" id="fullName" name="fullName"
+                    minlength="2" required aria-describedby="fullNameError">
+
+                <p id="fullNameError" class="error-message"></p>
+            </div>
+
+
+
+            <!-- email input -->
+            <div class="form-group">
+                <label for="email">Your Email Address</label>
+                <input type="email" id="email" name="email"
+                    required aria-describedby="emailError">
+
+                <p id="emailError" class="error-message"></p>
+            </div>
+
+
+
+            <!-- topic input -->
+            <div class="form-group">
+                <label for="topic">Topic of Interest</label>
+                <select id="topic" name="topic"
+                    required aria-describedby="topicError">
+
+                    <option value="">Choose a topic</option>
+                    <option value="web-design">Web Design</option>
+                    <option value="javascript">JavaScript</option>
+                    <option value="graphic-design">Graphic Design</option>
+                    <option value="other">Other</option>
+
+                </select>
+                <p id="topicError" class="error-message"></p>
+            </div>
+
+
+
+            <!-- comment area -->
+            <div class="form-group">
+                <label for="comments">Your Comments</label>
+
+                <textarea id="comments" name="comments"
+                    minlength="15" required aria-describedby="commentsError counter"></textarea>
+
+                <p id="counter">Minimum 15 characters! 0/15</p>
+                <p id="commentsError" class="error-message"></p>
+            </div>
+
+
+
+            <!-- website -->
+            <div class="form-group">
+                <label for="website">Your Website (optional)</label>
+
+                <input type="url" id="website" name="website"
+                    placeholder="https://example.com"
+                    aria-describedby="websiteError">
+
+                <p id="websiteError" class="error-message"></p>
+            </div>
+
+
+
+            <!-- buttons -->
+            <button type="submit">Submit Feedback</button>
+            <button type="reset">Clear Form</button>
+
+
+
+            <!-- success message -->
+            <p id="formStatus" role="status" aria-live="polite"></p>
+
+
+
+
+
+        </form>
+    </main>
+    
+</body>
+</html>
