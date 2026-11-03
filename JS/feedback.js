@@ -170,7 +170,12 @@ website.addEventListener("blur", validateWebsite);
 comments.addEventListener("input", function() {
 
     // Count the characters typed by the user
-    const currentLength = comments.value.length;
+    const currentLength = comments.value.trim().length;
+    //trim: removes whitespace from both ends of a string
+    //ensuring that only meaningful characters are counted when we submit form
+
+
+
     // Update the counter
     counter.textContent = `Minimum 15 characters ${currentLength}/15`;
     // Change the counter colour
@@ -242,7 +247,7 @@ function clearFieldError(input, errorElement) {
     input.classList.remove("input-valid");
 
     input.setAttribute("aria-invalid", "false");
-    //false means field is not marked as invalid, so it is valid
+    //false means field is not marked as invalid
 }
 
 
@@ -269,6 +274,7 @@ feedbackForm.addEventListener("submit", function(event) {
     console.log("Is the email valid?", isEmailValid);
     console.log("Is the topic valid?", isTopicValid);
     console.log("Are the comments valid?", areCommentsValid);
+    console.log("Is the website valid?", isWebsiteValid);
 
     // Check if any field is invalid
     if (!isNameValid || !isEmailValid || !isTopicValid || !areCommentsValid || !isWebsiteValid) {
