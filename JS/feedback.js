@@ -67,7 +67,7 @@ function validateEmail() {
     // Check if the email is empty
     if (emailValue === "") {
         showFieldError(email, emailError,
-            "Please enter your email address");
+            "Please enter your email address!");
         return false;
     }
 
@@ -96,7 +96,7 @@ function validateTopic() {
     // Check if the user selected a topic
     if (selectedTopic === "") {
         showFieldError(topic, topicError,
-            "Please select a topic");
+            "Please select a topic!");
         return false;
     }
 
@@ -177,7 +177,7 @@ comments.addEventListener("input", function() {
 
 
     // Update the counter
-    counter.textContent = `Minimum 15 characters ${currentLength}/15`;
+    counter.textContent = `Minimum 15 characters - ${currentLength}/15`;
     // Change the counter colour
     if (currentLength < 15) {
         counter.classList.remove("counter-valid");
