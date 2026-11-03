@@ -54,27 +54,6 @@ IMPLEMENTED FEATURES:
 
 -------------------------------------------
 
-PROJECT STRUCTURE:
-The project is organised into the following folders and files:
-
-ZHANG_LAB2_Portfolio/
-│
-├── index.html
-├── feedback.html
-├── README.md
-│
-├── Styles/
-│   ├── styles.css
-│   └── feedback.css
-│
-├── JS/
-│   └── feedback.js
-│
-└── Assets/
-    └── Images/
-
--------------------------------------------
-
 HOW TO: Run the project:
 - Open index.html to view the main portfolio website
 - Open feedback.html to access the Newsletter page
